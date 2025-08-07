@@ -1,5 +1,5 @@
 {
-  "outputDirectory": "dist/gestion-citas-peluqueria-dmc",
+  "outputDirectory": "dist/appointment-dmc",
   "cleanUrls": true,
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
