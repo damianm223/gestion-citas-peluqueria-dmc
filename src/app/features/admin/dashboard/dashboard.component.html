@@ -1,0 +1,22 @@
+<div class="p-6">
+  <!-- Mensaje flash -->
+  <div *ngIf="mostrarMensaje" class="bg-green-100 text-green-800 px-4 py-2 rounded mb-4 shadow">
+    ¡Sesión iniciada con éxito!
+  </div>
+
+  <!-- Encabezado -->
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold text-pink-600">Panel de Administración</h1>
+    <div class="flex items-center gap-4">
+      <span class="text-sm text-gray-600">Hola, {{ usuario }}</span>
+      <button
+        (click)="logout()"
+        class="bg-gray-300 hover:bg-gray-400 text-sm px-3 py-1 rounded transition">
+        Cerrar sesión
+      </button>
+    </div>
+  </div>
+
+  <!-- Contenido del dashboard aquí -->
+  <p class="text-gray-600">Aquí puedes gestionar citas, clientes, horarios, etc.</p>
+</div>

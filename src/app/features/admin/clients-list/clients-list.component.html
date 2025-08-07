@@ -1,0 +1,40 @@
+<div class="min-h-screen bg-gray-100 p-6">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6">Listado de Clientes</h1>
+
+  <!-- Filtros -->
+  <div class="bg-white shadow rounded-lg p-4 mb-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <input [(ngModel)]="filtroNombre" type="text" placeholder="Nombre" class="p-2 border rounded">
+    <input [(ngModel)]="filtroEmail" type="text" placeholder="Email" class="p-2 border rounded">
+    <input [(ngModel)]="filtroTelefono" type="text" placeholder="Teléfono" class="p-2 border rounded">
+  </div>
+
+  <!-- Tabla -->
+  <div class="bg-white shadow rounded-lg overflow-x-auto">
+    <table class="min-w-full text-sm text-left border-collapse">
+      <thead class="bg-pink-600 text-white">
+        <tr>
+          <th class="px-4 py-3">Nombre</th>
+          <th class="px-4 py-3">Email</th>
+          <th class="px-4 py-3">Teléfono</th>
+          <th class="px-4 py-3 text-center">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-100">
+        @for (cliente of clientesFiltrados; track cliente.id) {
+          <tr class="bg-white hover:bg-gray-50">
+            <td class="px-4 py-3">{{ cliente.nombre }}</td>
+            <td class="px-4 py-3">{{ cliente.email }}</td>
+            <td class="px-4 py-3">{{ cliente.telefono }}</td>
+            <td class="px-4 py-3 text-center">
+              <button
+                (click)="verDetalle(cliente.id)"
+                class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-1 rounded">
+                Ver detalle
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

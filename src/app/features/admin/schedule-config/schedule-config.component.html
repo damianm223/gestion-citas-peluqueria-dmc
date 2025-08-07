@@ -1,0 +1,50 @@
+<div class="p-6 bg-gray-100 min-h-screen">
+  <div class="max-w-4xl mx-auto bg-white shadow rounded-lg p-6">
+    <h1 class="text-2xl font-bold text-pink-600 mb-4">Configuración de Horarios</h1>
+
+    <!-- Formulario para añadir horario -->
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Día</label>
+        <select [(ngModel)]="nuevoDia" class="mt-1 block w-full rounded border-gray-300">
+          <option *ngFor="let dia of dias" [value]="dia">{{ dia }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Especialidad</label>
+        <input [(ngModel)]="nuevaEspecialidad" type="text" class="mt-1 block w-full rounded border-gray-300" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Hora</label>
+        <input [(ngModel)]="nuevaHora" type="time" class="mt-1 block w-full rounded border-gray-300" />
+      </div>
+
+      <div class="flex items-end">
+        <button (click)="agregarHora()" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded w-full">
+          Añadir
+        </button>
+      </div>
+    </div>
+
+    <!-- Horarios existentes -->
+    <div *ngFor="let horario of horarios()" class="mb-6 border-b pb-4">
+      <h2 class="text-lg font-semibold text-gray-800 mb-2">
+        {{ horario.dia | titlecase }} — {{ horario.especialidad }}
+      </h2>
+      <div class="flex flex-wrap gap-2">
+        @for (hora of horario.horas; track hora) {
+          <div class="flex items-center bg-gray-200 px-3 py-1 rounded-full text-sm">
+            {{ hora }}
+            <button
+              class="ml-2 text-red-600 hover:text-red-800 font-bold"
+              (click)="eliminarHora(horario.dia, horario.especialidad, hora)">
+              ✕
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

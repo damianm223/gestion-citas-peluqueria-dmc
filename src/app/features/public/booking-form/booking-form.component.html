@@ -1,0 +1,27 @@
+<div class="min-h-screen flex flex-col items-center justify-start bg-gray-100 p-6">
+  <!-- Resumen de cita -->
+  <div class="bg-white shadow rounded-lg p-6 w-full max-w-md mb-6">
+    <h1 class="text-2xl font-bold text-gray-700 mb-4">Resumen de cita</h1>
+    <p><strong>Profesional:</strong> {{ profesional?.nombre }}</p>
+    <p><strong>Especialidad:</strong> {{ profesional?.especialidad }}</p>
+    <p><strong>Día:</strong> {{ diaSeleccionado }}</p>
+    <p><strong>Hora:</strong> {{ horaSeleccionada }}</p>
+  </div>
+
+  <!-- Formulario -->
+  <div class="bg-white shadow rounded-lg p-6 w-full max-w-md">
+    <h2 class="text-xl font-bold text-gray-700 mb-4">Datos del cliente</h2>
+
+    <input [(ngModel)]="nombre" type="text" placeholder="Nombre"
+      class="w-full mb-3 p-2 border border-gray-300 rounded">
+    <input [(ngModel)]="email" type="email" placeholder="Email"
+      class="w-full mb-3 p-2 border border-gray-300 rounded">
+    <input [(ngModel)]="telefono" type="tel" placeholder="Teléfono"
+      class="w-full mb-4 p-2 border border-gray-300 rounded">
+
+    <button (click)="reservarCita()"
+      class="w-full px-4 py-2 rounded bg-green-500 text-white font-bold hover:bg-green-600 transition">
+      Reservar cita
+    </button>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="min-h-screen bg-gray-100 p-6">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6">Listado de Citas</h1>
+
+  <!-- Filtros -->
+  <div class="bg-white shadow rounded-lg p-4 mb-4 grid grid-cols-1 md:grid-cols-5 gap-4">
+    <input [(ngModel)]="filtroCliente" type="text" placeholder="Cliente" class="p-2 border rounded">
+
+    <!-- Select Profesional -->
+    <select [(ngModel)]="filtroProfesional" class="p-2 border rounded">
+      <option value="">Todos los profesionales</option>
+      @for (prof of profesionalesDisponibles; track prof) {
+        <option [value]="prof">{{ prof }}</option>
+      }
+    </select>
+
+    <input [(ngModel)]="filtroFecha" type="text" placeholder="Fecha" class="p-2 border rounded">
+    <input [(ngModel)]="filtroHora" type="text" placeholder="Hora" class="p-2 border rounded">
+
+    <!-- Select Estado -->
+    <select [(ngModel)]="filtroEstado" class="p-2 border rounded">
+      <option value="">Todos los estados</option>
+      @for (estado of estadosDisponibles; track estado) {
+        <option [value]="estado">{{ estado }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="overflow-x-auto">
+  <table class="min-w-full divide-y divide-gray-200 text-sm">
+    <thead class="bg-pink-600 text-white">
+      <tr>
+        <th class="px-4 py-3 text-left">Cliente</th>
+        <th class="px-4 py-3 text-left">Profesional</th>
+        <th class="px-4 py-3 text-left">Fecha</th>
+        <th class="px-4 py-3 text-left">Hora</th>
+        <th class="px-4 py-3 text-left">Estado</th>
+        <th class="px-4 py-3 text-left">Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      @for (cita of filteredCitas; track cita.id) {
+        <tr class="bg-white hover:bg-gray-50">
+          <td class="px-4 py-3">{{ cita.cliente }}</td>
+          <td class="px-4 py-3">{{ cita.profesional }}</td>
+          <td class="px-4 py-3">{{ cita.fecha }}</td>
+          <td class="px-4 py-3">{{ cita.hora }}</td>
+          <td class="px-4 py-3">
+            <span
+              class="inline-block px-2 py-1 rounded-full text-xs font-semibold"
+              [ngClass]="{
+                'bg-green-100 text-green-800': cita.estado === 'Completada',
+                'bg-yellow-100 text-yellow-800': cita.estado === 'Pendiente',
+                'bg-blue-100 text-blue-800': cita.estado === 'En curso'
+              }"
+            >
+              {{ cita.estado }}
+            </span>
+          </td>
+          <td class="px-4 py-3">
+            <button
+              (click)="verDetalle(cita.id)"
+              class="text-pink-600 hover:underline text-sm font-medium"
+            >
+              Ver detalle
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+</div>

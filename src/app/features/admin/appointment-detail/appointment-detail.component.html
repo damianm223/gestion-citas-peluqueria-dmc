@@ -1,0 +1,31 @@
+<div class="p-6 bg-gray-100 min-h-screen" *ngIf="appointment; else notFound">
+  <div class="max-w-2xl mx-auto bg-white shadow rounded-lg p-6">
+    <h1 class="text-2xl font-bold text-pink-600 mb-4">
+      Cita de {{ appointment.cliente }}
+    </h1>
+
+    <div class="space-y-2">
+      <p><strong>Email:</strong> {{ appointment.email }}</p>
+      <p><strong>Teléfono:</strong> {{ appointment.telefono }}</p>
+      <p><strong>Profesional:</strong> {{ appointment.profesional }}</p>
+      <p><strong>Fecha:</strong> {{ appointment.fecha }}</p>
+      <p><strong>Hora:</strong> {{ appointment.hora }}</p>
+      <p><strong>Estado:</strong> 
+        <span class="capitalize inline-block bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm">
+          {{ appointment.estado }}
+        </span>
+      </p>
+      <p *ngIf="appointment.observaciones"><strong>Observaciones:</strong> {{ appointment.observaciones }}</p>
+    </div>
+
+    <div class="mt-6">
+      <button (click)="volver()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded">
+        Volver
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <div class="text-center text-red-500 font-bold text-lg mt-20">Cita no encontrada</div>
+</ng-template>

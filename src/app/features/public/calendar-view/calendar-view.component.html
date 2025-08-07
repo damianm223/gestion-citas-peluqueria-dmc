@@ -1,0 +1,36 @@
+<div class="p-6 bg-gray-100 min-h-screen" *ngIf="profesionalSeleccionado; else noProfesional">
+  <div class="max-w-3xl mx-auto bg-white shadow rounded-lg p-6">
+    <h1 class="text-2xl font-bold text-pink-600 mb-4">
+      Selecciona una hora para {{ profesionalSeleccionado.nombre }}
+    </h1>
+
+    <!-- Selector de día -->
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700 mb-1">Día</label>
+      <select [(ngModel)]="diaSeleccionado" (change)="cargarHoras()" class="w-full rounded border-gray-300">
+        <option *ngFor="let dia of dias" [value]="dia">{{ dia }}</option>
+      </select>
+    </div>
+
+    <!-- Horas disponibles -->
+    <div *ngIf="horasDisponibles.length > 0; else sinHoras" class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      @for (hora of horasDisponibles; track hora) {
+        <button
+          (click)="seleccionarHora(hora)"
+          class="bg-pink-600 hover:bg-pink-700 text-white py-2 px-4 rounded text-center transition">
+          {{ hora }}
+        </button>
+      }
+    </div>
+
+    <ng-template #sinHoras>
+      <p class="text-gray-500">No hay horas disponibles para este día.</p>
+    </ng-template>
+  </div>
+</div>
+
+<ng-template #noProfesional>
+  <div class="text-center text-red-500 font-bold text-lg mt-20">
+    No has seleccionado ningún profesional.
+  </div>
+</ng-template>
