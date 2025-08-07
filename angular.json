@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "appointment-dmc": {
+     "gestion-citas-peluqueria-dmc": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "appointment-dmc:build:production"
+              "buildTarget": "gestion-citas-peluqueria-dmc:build:production"
             },
             "development": {
-              "buildTarget": "appointment-dmc:build:development"
+              "buildTarget": "gestion-citas-peluqueria-dmc:build:development"
             }
           },
           "defaultConfiguration": "development"
