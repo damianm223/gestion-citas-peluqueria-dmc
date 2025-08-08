@@ -1,5 +1,5 @@
 {
-  "name": "gestion-citas-peluqueria-dmc",
+  "name": "appointment-dmc",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
